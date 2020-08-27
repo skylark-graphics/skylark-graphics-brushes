@@ -1,82 +1,12 @@
 define([
-	"qscript/lang/Class",
-	"qface/geom/Point",
-	"qface/style/GradientBrush",
-	"qface/style/GradientPoint",
-	"qface/style/Color",
-	"qface/util/CssUtils"
-],function(Class,Point,GradientBrush,GradientPoint,Color,CssUtils) {
-	var RadialGradientBrush = Class.declare({
-		"-parent-"	:	GradientBrush,
-		
-		"-module-"	:	"qface/style/RadialGradientBrush",
-
-		"-public-"	:	{
-			"-attributes-" : {
-				"startRadius" : {
-					type : Number,
-				},
-				"endRadius" : {
-					type : Number,
-				}
-			},
-			
-			"-methods-"	:	{
-				"toString" : function() {
-					var props = {
-						type : "radial",
-						webkitGradType : "radial",
-						stops : [],
-						webKitPosn1 : this.startPoint.toString(),
-						webKitPosn2 : this.endPoint.toString(),
-						webKitRadius1 : this.startRadius && this.startRadius.toString(),
-						webKitRadius2 : this.endRadius && this.endRadius.toString()
-					};
-
-					props.stops.push({
-						color : Color.toCss(this.fromColor)
-					});
-
-					var stops = this.stops;
-					for (var i=0;i<stops.length;i++){
-						var stop = stops[i];
-						props.stops.push({
-							pos : stop.offset.toString(),
-							color : stop.color.toString()
-						});
-
-					}
-
-					props.stops.push({
-						color : Color.toCss(this.toColor)
-					});
-
-					return CssUtils.buildBackgroundImage(props)[0];
-				}
-			}
-		},	
-		
-		"-constructor-"	:	{
-			"initialize"	:	function(params) {
-				this._setupAttributeValues({
-					"startPoint":	params.startPoint,
-					"endPoint"	:	params.endPoint,
-					"fromColor"	:	params.fromColor,
-					"toColor"	:	params.toColor,
-					"startRadius"	:   params.startRadius,
-					"endRadius"		:   params.endRadius,
-				});
-
-				if (params.stops) {
-					var stops = params.stops;
-					for (var i = 0;i<stops.length;i++) {
-						var stop = stops[i];
-						this.addColorStop(stop.offset,stop.color);
-					}
-				}
-
-			}
-		}
+	"skylark-langx/langx",
+	"skylark-graphics-color",
+	"./brushes",
+	"./GradientBrush"
+],function(langx,Color,brushes,GradientBrush) {
+	
+	var RadialGradientBrush = GradientBrush.inherit({
+		"klassName"	:	"RadialGradientBrush",
 
 	});
 
@@ -104,6 +34,7 @@ define([
 		}
 	};
 
-	return RadialGradientBrush;
+	return brushes.RadialGradientBrush = RadialGradientBrush;
 	
 });	
+

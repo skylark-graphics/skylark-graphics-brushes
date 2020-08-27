@@ -2,67 +2,12 @@ define([
 	"skylark-langx/langx",
 	"skylark-graphics-color",
 	"./brushes",
-	"./GradientBrush",
-	"./GradientPoint",
-	"./GradientStop"
-],function(langx,Color,brushes,GradientBrush,GradientPoint,GradientStop) {
+	"./GradientBrush"
+
+],function(langx,Color,brushes,GradientBrush) {
 	
 	var LinearGradientBrush = GradientBrush.inherit({
 		"klassName"	:	"LinearGradientBrush",
-
-		"angle" : {
-			get : function() {
-				return this._.angle;
-			}
-		},
-
-		"toString" : function() {
-			var props = {
-				type : "linear",
-				webkitGradType : "linear",
-				stops : [],
-				webKitPosn1 : this.startPoint.toString(),
-				webKitPosn2 : this.endPoint.toString(),
-			};
-
-			props.stops.push({
-				color : Color.toCss(this.fromColor)
-			});
-
-			var stops = this.stops;
-			for (var i=0;i<stops.length;i++){
-				var stop = stops[i];
-				props.stops.push({
-					pos : stop.offset.toString(),
-					color :stop.color.toString()
-				});
-
-			}
-
-			props.stops.push({
-				color : this.toColor.toString()
-			});
-
-			return CssUtils.buildBackgroundImage(props)[0];
-		},
-		
-		"_construct"	:	function(params) {
-			this._ = {
-				"startPoint":	params.startPoint,
-				"endPoint"	:	params.endPoint,
-				"fromColor"	:	params.fromColor,
-				"toColor"	:	params.toColor,
-				"angle"		:   params.angle
-			};
-
-			if (params.stops) {
-				var stops = params.stops;
-				for (var i = 0;i<stops.length;i++) {
-					var stop = stops[i];
-					this.addColorStop(stop.offset,stop.color);
-				}
-			}
-		}
 
 	});
 
