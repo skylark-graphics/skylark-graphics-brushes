@@ -7,7 +7,7 @@ define([
 
 	var ImageBrush = TileBrush.inherit({
 
-		"klassName"	:	"qface/style/ImageBrush",
+		"klassName"	:	"ImageBrush",
 
 		"imageSource"	:	{
 			get : function() {
