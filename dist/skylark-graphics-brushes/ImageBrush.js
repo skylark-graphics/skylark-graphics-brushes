@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["skylark-langx/langx","skylark-graphics-color","./brushes","./TileBrush"],function(r,e,n,u){var t=u.inherit({klassName:"ImageBrush",imageSource:{get:function(){return this._.imageSource}},toString:function(){return"url("+this.imageSource+")"},_construct:function(r){this._={imageSource:r}}});return t.fromString=function(r){var e=CssUtils.parseBackgroundImage(r);return"url"==e.type?new t(e.url):null},n.ImageBrush=t});
+define(["skylark-langx/langx","./brushes","./TileBrush"],function(r,e,n){var u=n.inherit({klassName:"ImageBrush",imageSource:{get:function(){return this._.imageSource}},toString:function(){return"url("+this.imageSource+")"},_construct:function(r){this._={imageSource:r}}});return u.fromString=function(r){var e=CssUtils.parseBackgroundImage(r);return"url"==e.type?new u(e.url):null},e.ImageBrush=u});
 //# sourceMappingURL=sourcemaps/ImageBrush.js.map

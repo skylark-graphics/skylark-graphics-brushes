@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["skylark-langx/langx","skylark-graphics-color","./brushes","./Brush"],function(r,a,s,n){var e=n.inherit({klassName:"GradientBrush"});return s.GradientBrush=e});
+define(["skylark-langx/langx","./brushes","./Brush"],function(r,n,a){var e=a.inherit({klassName:"GradientBrush"});return n.GradientBrush=e});
 //# sourceMappingURL=sourcemaps/GradientBrush.js.map

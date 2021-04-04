@@ -1,9 +1,8 @@
 define([
 	"skylark-langx/langx",
-	"skylark-graphics-color",
 	"./brushes",
 	"./TileBrush"
-],function(langx,Color,brushes,TileBrush) {
+],function(langx,brushes,TileBrush) {
 
 	var ImageBrush = TileBrush.inherit({
 

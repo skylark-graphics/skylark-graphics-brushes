@@ -1,10 +1,9 @@
 define([
 	"skylark-langx/langx",
-	"skylark-graphics-color",
 	"./brushes",
 	"./GradientBrush"
 
-],function(langx,Color,brushes,GradientBrush) {
+],function(langx,brushes,GradientBrush) {
 	
 	var LinearGradientBrush = GradientBrush.inherit({
 		"klassName"	:	"LinearGradientBrush",
